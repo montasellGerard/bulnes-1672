@@ -7,6 +7,7 @@ import { CalendarIcon, PhoneIcon, WhatsAppIcon } from "@/components/ui/Icons";
 import {
   ALL_SERVICES,
   BOOKSY_URL,
+  CLOSED_WEEKDAYS,
   PHONE_DISPLAY,
   PHONE_TEL,
   WHATSAPP_LINK,
@@ -52,7 +53,7 @@ export function BookingSection() {
     d.setHours(0, 0, 0, 0);
     while (list.length < 6) {
       d.setDate(d.getDate() + 1);
-      if (d.getDay() !== 0) list.push(new Date(d)); // assumption: closed on Sundays
+      if (!CLOSED_WEEKDAYS.includes(d.getDay())) list.push(new Date(d));
     }
     setDays(list);
   }, []);

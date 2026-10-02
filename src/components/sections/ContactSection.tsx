@@ -59,11 +59,15 @@ export function ContactSection() {
                 <div>
                   <dt className="text-xs uppercase tracking-[0.2em] text-cream/45">Horario</dt>
                   <dd className="mt-1 text-cream">
+                    {OPENING_HOURS.days}
+                    <br />
                     Mañanas {OPENING_HOURS.morning}
                     <br />
                     Tardes {OPENING_HOURS.afternoon}
                   </dd>
-                  <dd className="mt-1 text-sm text-cream/55">{OPENING_HOURS.note}</dd>
+                  <dd className="mt-1 text-sm text-cream/55">
+                    {OPENING_HOURS.closed} · {OPENING_HOURS.note}
+                  </dd>
                 </div>
               </div>
             </dl>

@@ -32,9 +32,13 @@ export function Footer() {
             {ADDRESS_CITY}
           </p>
           <p className="mt-3 font-body text-sm text-cream/65">
+            {OPENING_HOURS.days}
+            <br />
             {OPENING_HOURS.morning}
             <br />
             {OPENING_HOURS.afternoon}
+            <br />
+            <span className="text-cream/45">{OPENING_HOURS.closed}</span>
           </p>
         </div>
 

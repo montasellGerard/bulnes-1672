@@ -25,12 +25,17 @@ export const MAPS_QUERY = encodeURIComponent(
 export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
 export const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&z=16&output=embed`;
 
-// TODO(confirm with client): Booksy only shows "today". Exact working days pending.
+// Open Tuesday to Saturday. Closed Sunday and Monday.
 export const OPENING_HOURS = {
+  days: "Martes a sábado",
   morning: "9:00 – 13:30",
   afternoon: "15:30 – 20:00",
+  closed: "Domingo y lunes cerrado",
   note: "Solo con cita previa",
 };
+
+/** JS getDay() values when the shop is closed (0 = Sunday, 1 = Monday). */
+export const CLOSED_WEEKDAYS = [0, 1];
 
 // ─── Services (prices in EUR, from Booksy) ──────────────────────
 

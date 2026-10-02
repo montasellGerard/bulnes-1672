@@ -61,6 +61,14 @@ const jsonLd = {
     addressCountry: "ES",
   },
   priceRange: "13€ – 31€",
+  openingHoursSpecification: [
+    { opens: "09:00", closes: "13:30" },
+    { opens: "15:30", closes: "20:00" },
+  ].map((h) => ({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    ...h,
+  })),
   url: BOOKSY_URL,
   sameAs: [BOOKSY_URL],
   potentialAction: { "@type": "ReserveAction", target: PHONE_TEL },

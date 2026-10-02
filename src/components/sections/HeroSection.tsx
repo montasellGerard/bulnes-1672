@@ -135,7 +135,7 @@ export function HeroSection() {
           <li className="flex items-center gap-3 py-5 sm:px-6 text-cream/80">
             <ClockIcon className="shrink-0 text-gold" />
             <span className="font-body text-sm">
-              {OPENING_HOURS.morning} · {OPENING_HOURS.afternoon}
+              Mar – Sáb · {OPENING_HOURS.morning} · {OPENING_HOURS.afternoon}
             </span>
           </li>
         </ul>
