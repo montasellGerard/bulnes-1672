@@ -5,21 +5,53 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
-    background-color: #0e0e0e;
-    color: #f0ede6;
+    background-color: #0b1220;
+    color: #efe6d2;
   }
 
   ::selection {
-    background: #c9a84c;
-    color: #0e0e0e;
+    background: #c29a55;
+    color: #0b1220;
+  }
+
+  :focus-visible {
+    outline: 2px solid #d9b877;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Double gilt frame, like the mirrors in the shop */
+  .gilt-frame {
+    @apply relative;
+    box-shadow:
+      0 0 0 1px rgba(194, 154, 85, 0.65),
+      0 0 0 6px #0b1220,
+      0 0 0 7px rgba(194, 154, 85, 0.35);
+  }
+
+  .eyebrow {
+    @apply font-body text-[11px] font-medium uppercase tracking-[0.32em] text-gold;
+  }
+
+  /* Dotted leader between service name and price, like an old price board */
+  .leader {
+    @apply flex-1 border-b border-dotted border-cream/25 translate-y-[-5px] min-w-[1.5rem];
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

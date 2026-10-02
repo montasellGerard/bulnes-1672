@@ -1,132 +1,208 @@
-import type { GalleryItem, Service } from "./types";
+import type { Bono, GalleryCategory, GalleryItem, ServiceGroup } from "./types";
+
+// ─── Business data ──────────────────────────────────────────────
+// Source: Booksy listing + client info (Oct 2026).
+
+export const BUSINESS_NAME = "Bulnes1672";
+
+export const PHONE_DISPLAY = "656 60 66 79";
+export const PHONE_TEL = "tel:+34656606679";
 
 export const WHATSAPP_LINK =
-  "https://wa.me/5491100000000?text=Hola%2C%20quiero%20reservar%20un%20turno%20en%20Bulnes%201672";
+  "https://wa.me/34656606679?text=" +
+  encodeURIComponent("Hola, quería pedir cita en Bulnes1672.");
 
-export const INSTAGRAM_URL = "https://instagram.com/bulnes1672";
+export const BOOKSY_URL =
+  "https://booksy.com/es-es/72962_bulnes1672-barberia-clasica_barberia_49475_granollers";
 
-export const ADDRESS = "Bulnes 1672, Palermo, CABA";
+export const ADDRESS_LINE = "Carrer del Camp de les Moreres, 2 · Local 8";
+export const ADDRESS_CITY = "08401 Granollers, Barcelona";
+export const ADDRESS_SHORT = "Camp de les Moreres, 2 · Granollers";
 
-export const EMAIL = "contacto@bulnes1672.com";
+export const MAPS_QUERY = encodeURIComponent(
+  "Carrer del Camp de les Moreres 2, 08401 Granollers"
+);
+export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
+export const MAPS_EMBED = `https://www.google.com/maps?q=${MAPS_QUERY}&z=16&output=embed`;
 
-export const FILTER_TABS = [
+// TODO(confirm with client): Booksy only shows "today". Exact working days pending.
+export const OPENING_HOURS = {
+  morning: "9:00 – 13:30",
+  afternoon: "15:30 – 20:00",
+  note: "Solo con cita previa",
+};
+
+// ─── Services (prices in EUR, from Booksy) ──────────────────────
+
+export const SERVICE_GROUPS: ServiceGroup[] = [
+  {
+    title: "Corte",
+    intro: "Tijera, máquina y acabado clásico.",
+    services: [
+      { name: "Corte", price: 21, duration: 30, popular: true },
+      {
+        name: "Corte de pelo largo",
+        description: "Para cabello de medida larga que requiere más trabajo.",
+        price: 27,
+        duration: 30,
+      },
+      { name: "Corte niño", description: "Hasta 12 años.", price: 17, duration: 30 },
+      { name: "Corte especial jubilados", price: 17, duration: 30 },
+    ],
+  },
+  {
+    title: "Barba y afeitado",
+    intro: "Navaja, toalla caliente y masaje. Como se hacía antes.",
+    services: [
+      {
+        name: "Afeitado tradicional",
+        description: "Afeitado total con navaja: diseño, masaje y cuidado de la piel.",
+        price: 17,
+        duration: 30,
+      },
+      {
+        name: "Arreglo de barba tradicional",
+        description: "Perfilado con navaja, masaje y cuidado de la barba.",
+        price: 13,
+        duration: 30,
+        popular: true,
+      },
+      {
+        name: "Afeitado con máquina (shaver)",
+        description: "Diseño, cuidado de piel y barba con máquina.",
+        price: 13,
+        duration: 30,
+      },
+    ],
+  },
+  {
+    title: "Ritual completo",
+    intro: "Corte y barba en una sola visita.",
+    services: [
+      {
+        name: "Corte + arreglo de barba",
+        description: "Corte y arreglo de barba tradicional con navaja.",
+        price: 30,
+        duration: 60,
+        popular: true,
+      },
+      {
+        name: "Corte + afeitado tradicional",
+        description: "Corte y afeitado total con navaja.",
+        price: 31,
+        duration: 60,
+      },
+      {
+        name: "Corte + afeitado exprés al 0",
+        price: 26,
+        duration: 30,
+      },
+      {
+        name: "Arreglo de barba + rapado a máquina",
+        price: 18,
+        duration: 30,
+      },
+    ],
+  },
+];
+
+export const BONOS: Bono[] = [
+  {
+    name: "Bono 5 cortes",
+    description: "Cinco cortes para usar cuando quieras.",
+    price: 100,
+  },
+  {
+    name: "Bono 5 cortes + 5 afeitados",
+    description: "Cinco cortes y cinco afeitados tradicionales.",
+    price: 140,
+  },
+];
+
+export const ALL_SERVICES = SERVICE_GROUPS.flatMap((g) => g.services);
+
+// ─── Products used in the shop ──────────────────────────────────
+
+export const PRODUCT_BRANDS = [
+  "Myrsol",
+  "Pinaud Clubman",
+  "Stirling Soap Co.",
+  "RazoRock",
+  "Proraso",
+];
+
+// ─── Gallery (real photos from the shop) ────────────────────────
+
+export const FILTER_TABS: ("Todos" | GalleryCategory)[] = [
   "Todos",
-  "Fade",
-  "Skin Fade",
-  "Barba",
-  "Diseño",
-  "Clásico",
+  "Trabajo",
+  "El local",
+  "Producto",
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "1",
-    src: "https://picsum.photos/seed/fade1/600/600",
-    label: "High Fade clásico",
-    category: "Fade",
+    src: "/images/trabajo-pompadour-bn.jpg",
+    label: "Peinado hacia atrás y barba canosa perfilada",
+    category: "Trabajo",
+    width: 640,
+    height: 779,
   },
   {
     id: "2",
-    src: "https://picsum.photos/seed/fade2/600/600",
-    label: "Low Fade con textura",
-    category: "Fade",
+    src: "/images/local-sillones.jpg",
+    label: "Sillones de barbero clásicos y espejos dorados",
+    category: "El local",
+    width: 640,
+    height: 837,
   },
   {
     id: "3",
-    src: "https://picsum.photos/seed/skinfade1/600/600",
-    label: "Skin Fade a piel",
-    category: "Skin Fade",
+    src: "/images/trabajo-tijera-capa.jpg",
+    label: "Corte a tijera junto al escaparate",
+    category: "Trabajo",
+    width: 640,
+    height: 853,
   },
   {
     id: "4",
-    src: "https://picsum.photos/seed/skinfade2/600/600",
-    label: "Skin Fade con flequillo",
-    category: "Skin Fade",
+    src: "/images/producto-vitrina.jpg",
+    label: "Brochas y jabones de afeitado en la vitrina",
+    category: "Producto",
+    width: 640,
+    height: 853,
   },
   {
     id: "5",
-    src: "https://picsum.photos/seed/beard1/600/600",
-    label: "Barba perfilada",
-    category: "Barba",
+    src: "/images/trabajo-maquina.jpg",
+    label: "Degradado clásico en el sillón",
+    category: "Trabajo",
+    width: 640,
+    height: 853,
   },
   {
     id: "6",
-    src: "https://picsum.photos/seed/beard2/600/600",
-    label: "Barba con degradado",
-    category: "Barba",
+    src: "/images/producto-myrsol.jpg",
+    label: "Emulsión y lociones Myrsol",
+    category: "Producto",
+    width: 640,
+    height: 853,
   },
   {
     id: "7",
-    src: "https://picsum.photos/seed/design1/600/600",
-    label: "Diseño geométrico",
-    category: "Diseño",
+    src: "/images/trabajo-peinado.jpg",
+    label: "Acabado y peinado frente al espejo",
+    category: "Trabajo",
+    width: 640,
+    height: 853,
   },
   {
     id: "8",
-    src: "https://picsum.photos/seed/design2/600/600",
-    label: "Diseño en la nuca",
-    category: "Diseño",
-  },
-  {
-    id: "9",
-    src: "https://picsum.photos/seed/classic1/600/600",
-    label: "Corte clásico con tijera",
-    category: "Clásico",
-  },
-  {
-    id: "10",
-    src: "https://picsum.photos/seed/classic2/600/600",
-    label: "Corte italiano",
-    category: "Clásico",
-  },
-  {
-    id: "11",
-    src: "https://picsum.photos/seed/fade3/600/600",
-    label: "Mid Fade texturizado",
-    category: "Fade",
-  },
-  {
-    id: "12",
-    src: "https://picsum.photos/seed/classic3/600/600",
-    label: "Clásico con raya",
-    category: "Clásico",
-  },
-];
-
-export const SERVICES: Service[] = [
-  {
-    name: "Corte clásico",
-    description: "Corte tradicional con tijera y máquina",
-    price: "$3.500",
-  },
-  {
-    name: "Fade / Degradado",
-    description: "Degradado progresivo con máquina",
-    price: "$4.000",
-  },
-  {
-    name: "Skin Fade",
-    description: "Degradado a piel con navaja",
-    price: "$4.500",
-  },
-  {
-    name: "Diseño y perfilado",
-    description: "Diseño de líneas y perfilado de nuca",
-    price: "$2.500",
-  },
-  {
-    name: "Arreglo de barba",
-    description: "Perfilado y definición de barba",
-    price: "$2.500",
-  },
-  {
-    name: "Afeitado con navaja",
-    description: "Afeitado clásico con navaja caliente",
-    price: "$3.000",
-  },
-  {
-    name: "Corte + Barba",
-    description: "Pack completo, el favorito del barrio",
-    price: "$6.000",
+    src: "/images/producto-lociones.jpg",
+    label: "Aftershaves y bálsamos en el puesto",
+    category: "Producto",
+    width: 640,
+    height: 853,
   },
 ];

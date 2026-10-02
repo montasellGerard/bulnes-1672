@@ -5,10 +5,12 @@ interface GoldButtonProps {
   onClick?: () => void;
   children: React.ReactNode;
   large?: boolean;
-  variant?: "solid" | "outline";
+  variant?: "solid" | "outline" | "ghost";
   external?: boolean;
   className?: string;
   type?: "button" | "submit";
+  disabled?: boolean;
+  ariaLabel?: string;
 }
 
 export function GoldButton({
@@ -20,17 +22,19 @@ export function GoldButton({
   external = false,
   className = "",
   type = "button",
+  disabled = false,
+  ariaLabel,
 }: GoldButtonProps) {
   const base =
-    "inline-flex items-center gap-2 font-body font-medium tracking-widest uppercase text-sm rounded transition-colors duration-200 cursor-pointer";
+    "inline-flex items-center justify-center gap-2.5 font-body font-semibold uppercase tracking-[0.18em] rounded transition-colors duration-200 cursor-pointer disabled:cursor-not-allowed disabled:opacity-40";
 
-  const sizes = large ? "px-10 py-4 text-base" : "px-8 py-3";
+  const sizes = large ? "px-8 py-4 text-[13px]" : "px-6 py-3 text-xs";
 
   const variants = {
-    solid:
-      "bg-gold hover:bg-gold-dim text-bg-base",
+    solid: "bg-gold text-navy-950 hover:bg-gold-light",
     outline:
-      "bg-transparent border border-gold text-gold hover:bg-gold hover:text-bg-base",
+      "border border-gold/70 text-gold-light hover:bg-gold hover:text-navy-950 hover:border-gold",
+    ghost: "text-cream/80 hover:text-gold-light",
   };
 
   const classes = `${base} ${sizes} ${variants[variant]} ${className}`;
@@ -39,10 +43,9 @@ export function GoldButton({
     return (
       <a
         href={href}
+        aria-label={ariaLabel}
         className={classes}
-        {...(external
-          ? { target: "_blank", rel: "noopener noreferrer" }
-          : {})}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       >
         {children}
       </a>
@@ -50,7 +53,13 @@ export function GoldButton({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={ariaLabel}
+      className={classes}
+    >
       {children}
     </button>
   );

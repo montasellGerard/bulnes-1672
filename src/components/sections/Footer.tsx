@@ -1,88 +1,67 @@
-import { WHATSAPP_LINK, INSTAGRAM_URL, ADDRESS } from "@/lib/constants";
+import {
+  ADDRESS_CITY,
+  ADDRESS_LINE,
+  BOOKSY_URL,
+  OPENING_HOURS,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  WHATSAPP_LINK,
+} from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-bg-base border-t border-white/10 py-12 px-6">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
-        {/* Brand */}
-        <div>
-          <p className="font-display text-2xl text-gold tracking-[0.2em] uppercase mb-2">
-            Bulnes 1672
+    <footer className="border-t border-gold/20 bg-navy-950 px-5 md:px-6 pt-16 pb-28 md:pb-12">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-4">
+        <div className="md:col-span-2">
+          <p className="font-display text-3xl font-semibold text-cream">
+            Bulnes<span className="text-gold">1672</span>
           </p>
-          <p className="font-body text-sm text-text-cream/40">
-            Barbería de barrio con oficio
+          <p className="mt-2 font-body text-[10px] uppercase tracking-[0.4em] text-cream/45">
+            Barbería clásica · Granollers
           </p>
-          <p className="font-body text-xs text-text-cream/25 mt-2">
-            {ADDRESS}
+          <p className="mt-5 max-w-sm font-body text-sm leading-relaxed text-cream/55">
+            Servicio exclusivo para caballeros. Solo con cita previa.
           </p>
         </div>
 
-        {/* Horarios */}
         <div>
-          <p className="font-body text-xs tracking-widest uppercase text-gold/70 mb-4">
-            Horarios
+          <p className="eyebrow mb-4">Visítanos</p>
+          <p className="font-body text-sm leading-relaxed text-cream/65">
+            {ADDRESS_LINE}
+            <br />
+            {ADDRESS_CITY}
           </p>
-          <div className="space-y-1 font-body text-sm text-text-cream/60">
-            <p>Lun – Vie &nbsp;&nbsp; 9:00 – 20:00</p>
-            <p>Sábado &nbsp;&nbsp;&nbsp;&nbsp; 9:00 – 17:00</p>
-            <p className="text-text-cream/30">Domingo &nbsp;&nbsp; Cerrado</p>
-          </div>
+          <p className="mt-3 font-body text-sm text-cream/65">
+            {OPENING_HOURS.morning}
+            <br />
+            {OPENING_HOURS.afternoon}
+          </p>
         </div>
 
-        {/* Redes */}
         <div>
-          <p className="font-body text-xs tracking-widest uppercase text-gold/70 mb-4">
-            Redes
-          </p>
-          <div className="space-y-3">
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 font-body text-sm text-text-cream/60 hover:text-gold transition-colors duration-200"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="shrink-0"
-              >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-              </svg>
-              WhatsApp
-            </a>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 font-body text-sm text-text-cream/60 hover:text-gold transition-colors duration-200"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="shrink-0"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-              @bulnes1672
-            </a>
-          </div>
+          <p className="eyebrow mb-4">Reservas</p>
+          <ul className="space-y-2 font-body text-sm">
+            <li>
+              <a href={BOOKSY_URL} target="_blank" rel="noopener noreferrer" className="text-cream/65 hover:text-gold-light">
+                Booksy
+              </a>
+            </li>
+            <li>
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="text-cream/65 hover:text-gold-light">
+                WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href={PHONE_TEL} className="text-cream/65 hover:text-gold-light">
+                {PHONE_DISPLAY}
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <p className="text-center mt-12 font-body text-xs text-text-cream/20 tracking-wide">
-        © {new Date().getFullYear()} Bulnes 1672. Todos los derechos reservados.
+      <p className="mx-auto mt-14 max-w-6xl border-t border-cream/10 pt-6 font-body text-xs text-cream/35">
+        © {new Date().getFullYear()} Bulnes1672 · Barbería Clásica
       </p>
     </footer>
   );
